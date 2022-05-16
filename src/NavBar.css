@@ -1,0 +1,15 @@
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  background-color: rgba(41, 52, 41, 0.638);
+  height: 4rem;
+  color: black;
+  font-weight: 600;
+}
+
+nav a:visited {
+  color: black;
+}

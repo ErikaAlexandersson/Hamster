@@ -1,0 +1,88 @@
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.hamster-container img {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  z-index: 1;
+}
+
+.hamster-container img:hover {
+  width: 250px;
+  height: 250px;
+  margin-top: -20px;
+  margin-left: -20px;
+  transition: width 3s, height 3s, margin-left 3s, margin-top 3s;
+}
+
+.hamster-container {
+  background: radial-gradient(
+    circle,
+    rgba(164, 145, 88, 0.655) 0%,
+    rgba(244, 245, 247, 0.9261905445772058) 100%
+  );
+  width: 300px;
+  height: 400px;
+  margin: auto;
+  margin-top: 4rem;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.img-container {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 50%;
+  z-index: 1;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+.info {
+  background-color: blue;
+  width: 30px;
+  height: 20px;
+  margin: auto;
+  margin-top: 1rem;
+  border-radius: 36px;
+  background: linear-gradient(145deg, #a29489, #605852);
+  box-shadow: 3px 3px 3px #544e4a, -1px -0.5px 5px #504a45;
+}
+
+.overflow-container {
+  width: 40px;
+  height: 50px;
+  margin: auto;
+  margin-top: 2rem;
+  border-radius: 50%;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.overflow-container-clicked {
+  position: relative;
+  background: radial-gradient(
+    circle,
+    rgba(87, 82, 67, 0.782) 0%,
+    rgba(220, 225, 231, 1) 100%
+  );
+  margin: auto;
+  margin-top: -15rem;
+  border-radius: 5%;
+  z-index: 3;
+  overflow: hidden;
+  width: 300px;
+  height: 400px;
+  transition: width 2s, height 2s, margin-top 2s, border-radius 4s,
+    background-color 4s;
+  color: rgb(243, 243, 242);
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+}

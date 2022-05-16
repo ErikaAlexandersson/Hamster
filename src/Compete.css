@@ -1,0 +1,33 @@
+.compete {
+  background-image: radial-gradient(
+      circle,
+      rgba(151, 160, 143, 0.829) 0%,
+      rgba(64, 68, 48, 0.67) 85%
+    ),
+    url(/hamster-war.jpg);
+  background-position: center, center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: 100vw;
+  height: 100vh;
+}
+
+.compete main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#counter {
+  font-size: 3rem;
+  font-weight: 600;
+}
+.winner-container {
+  width: 400px;
+  height: 400px;
+  margin: auto;
+}
+#trophy {
+  width: 100px;
+  height: 100px;
+}

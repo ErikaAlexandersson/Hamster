@@ -1,0 +1,23 @@
+.home {
+  background-image: radial-gradient(
+    circle,
+    rgba(151, 160, 143, 0.829) 0%,
+    rgba(64, 68, 48, 0.67) 85%
+  );
+  /* url(../public/hamster-war.jpg); */
+  background-position: center, center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: 100vw;
+  height: 100vh;
+}
+
+#trophy {
+  width: 200px;
+}
+
+.home h1 {
+  margin: 0;
+  padding: 1rem;
+}

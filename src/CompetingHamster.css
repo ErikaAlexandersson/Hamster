@@ -1,0 +1,26 @@
+.competing-hamster img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+}
+
+.competing-hamster {
+  width: 450px;
+  height: 600px;
+  margin: auto;
+  background: radial-gradient(
+    circle,
+    rgba(164, 145, 88, 0.655) 0%,
+    rgba(244, 245, 247, 0.9261905445772058) 100%
+  );
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.animate__animated.animate__delay-3s {
+  width: fit-content;
+  margin: auto;
+}
