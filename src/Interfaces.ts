@@ -14,4 +14,5 @@ export interface Hamster {
 export interface Matches {
   winnerId: string;
   loserId: string;
+  time: number;
 }

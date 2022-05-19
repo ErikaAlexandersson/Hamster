@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { Hamster } from "./Interfaces";
 import "./Compete.css";
 import CompetingHamster from "./CompetingHamster";
-import FireWorks from "./FireWorks";
+// import FireWorks from "./FireWorks";
+import fixUrl from "./utils";
 import Cutest from "./Cutest";
 
 function Compete() {
@@ -12,7 +13,7 @@ function Compete() {
   const [voteOrWinner, setVoteorWinner] = useState<string>(
     "Rösta på din favorit"
   );
-  const [winner, setWinner] = useState<Hamster[] | []>([]);
+  const [winner, setWinner] = useState<Hamster | null>(null);
 
   useEffect(() => {
     if (counter <= 0) {
@@ -25,56 +26,40 @@ function Compete() {
     }
   }, [counter]);
 
-  useEffect(() => {
-    function updateHamster(e: any) {
-      if (winner.length >= 1) {
-        if (competingHamsters.includes(winner[0])) {
-          console.log(winner);
-        }
-      }
-    }
-    updateHamster(winner);
-  }, [winner]);
-
-  async function getWinner(e: string) {
-    const response: Response = await fetch(
-      `http://localhost:1337/hamsters/${e}`
-    );
-    const hamsterData: any = await response.json();
-
-    if (hamsterData !== null) {
-      hamsterData.id = e;
-      setWinner((winner) => [...winner, hamsterData as Hamster]);
-    }
+  async function getWinner(winner: Hamster) {
+    winner.wins = winner.wins + 1;
+    winner.games = winner.games + 1;
+    setWinner(winner);
   }
 
   async function vote(hamster: any) {
     let winnerData = { games: hamster.games + 1, wins: hamster.wins + 1 };
-    fetch(`http://localhost:1337/hamsters/${hamster.id}`, {
+    fetch(fixUrl(`/hamsters/${hamster.id}`), {
       body: JSON.stringify(winnerData),
       headers: {
         "Content-Type": "application/json",
       },
       method: "PUT",
-    }).then((response) => {
-      console.log(response);
-    });
+    }).then((response) => {});
     let looser = competingHamsters.filter((e) => e.id !== hamster.id);
     let looserData = {
       games: looser[0].games + 1,
       defeats: looser[0].defeats + 1,
     };
-    fetch(`http://localhost:1337/hamsters/${looser[0].id}`, {
+    fetch(fixUrl(`/hamsters/${looser[0].id}`), {
       body: JSON.stringify(looserData),
       headers: {
         "Content-Type": "application/json",
       },
       method: "PUT",
-    }).then((response) => {
-      console.log(response);
-    });
-    let matchData = { winnerId: hamster.id, loserId: looser[0].id };
-    fetch("http://localhost:1337/matches", {
+    }).then((response) => {});
+    let timeStamp = Date.now();
+    let matchData = {
+      winnerId: hamster.id,
+      loserId: looser[0].id,
+      time: timeStamp,
+    };
+    fetch(fixUrl("/matches"), {
       body: JSON.stringify(matchData),
       headers: {
         "Content-Type": "application/json",
@@ -87,7 +72,7 @@ function Compete() {
       });
     setShowOrHide(true);
     setVoteorWinner("Vinnaren är");
-    getWinner(hamster.id);
+    getWinner(hamster);
   }
 
   function whatHamster(e: Hamster) {
@@ -95,9 +80,10 @@ function Compete() {
   }
   function refresh() {
     setCounter(3);
-    setWinner([]);
+    setWinner(null);
     setShowOrHide(false);
     setVoteorWinner("Rösta på din favorit");
+    setCompetingHamsters([]);
   }
 
   return (
@@ -109,7 +95,6 @@ function Compete() {
 
       {showOrHide && winner ? (
         <div className="winner-container">
-          <FireWorks />
           <img
             className="animate__animated animate__tada"
             id="trophy"

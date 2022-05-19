@@ -1,26 +1,22 @@
-import { Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Cutest from "./Cutest";
 import { Hamster } from "./Interfaces";
-import FireWorks from "./FireWorks";
+import fixUrl from "./utils";
+// import FireWorks from "./FireWorks";
 import "./HomePage.css";
 function HomePage() {
-  const [data, setData] = useState<Hamster[] | null>(null);
+  const [data, setData] = useState<Hamster | null>(null);
   useEffect(() => {
     async function getData() {
-      const response: Response = await fetch(
-        "http://localhost:1337/hamsters/cutest"
-      );
-      const apiData: any = await response.json();
-      let data: any[] = apiData;
-
-      if (data.length > 1 && data !== null) {
-        let random = Math.floor(Math.random() * data.length);
-        setData((data) => [...data, apiData[random] as Hamster]);
-        // setData(newData);
+      const response: Response = await fetch(fixUrl("/hamsters/cutest"));
+      const apiData: Hamster[] = await response.json();
+      console.log(fixUrl("/hamsters/cutest"));
+      if (apiData !== null && apiData.length >= 1) {
+        let random = Math.floor(Math.random() * apiData.length);
+        let randomHamster = apiData[random];
+        setData(randomHamster);
         return;
       }
-      setData(apiData);
     }
     getData();
   }, []);
@@ -41,7 +37,6 @@ function HomePage() {
         alt=""
       /> */}
       <Cutest data={data} />
-      <FireWorks />
     </div>
   );
 }

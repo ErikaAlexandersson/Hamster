@@ -1,0 +1,23 @@
+.game-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.game-card img {
+  width: 200px;
+  height: 200px;
+}
+.winners {
+  border: 1px solid black;
+}
+.losers {
+  border: 1px solid black;
+}
+
+.game-number {
+  border: 1px solid black;
+  margin: 0;
+  text-align: center;
+  padding-top: 5rem;
+  font-size: 1rem;
+}

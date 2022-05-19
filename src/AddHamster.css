@@ -1,0 +1,16 @@
+.add-form input {
+  display: block;
+  padding: 0.3rem;
+  width: 15rem;
+  margin: 1rem;
+}
+
+.add-form {
+  width: 25rem;
+  height: 20rem;
+  border: 1px solid black;
+  position: absolute;
+  left: 40vw;
+  z-index: 1;
+  background-color: rgb(131, 112, 88);
+}

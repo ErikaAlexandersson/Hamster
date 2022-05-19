@@ -2,7 +2,8 @@
   "compilerOptions": {
     "composite": true,
     "module": "esnext",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "lib": ["DOM", "DOM.Iterable", "ESNext", "es5", "es6"]
   },
   "include": ["vite.config.ts"]
 }
