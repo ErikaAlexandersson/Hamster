@@ -1,6 +1,8 @@
 import { Hamster, Matches } from "./Interfaces";
 import { useSelector } from "react-redux";
 import { RootState } from "./state/store";
+import "./GameInfo.css";
+import { useState } from "react";
 interface Prop {
   data: Hamster;
   winner: Matches[] | null;
@@ -8,6 +10,7 @@ interface Prop {
 }
 
 function GameInfo({ data, winner, loser }: Prop) {
+  const [winningInfo, setWinningInfo] = useState<null | Hamster[]>();
   const hamsterData = useSelector((state: RootState) => state.hamster.value);
   let winnerHamsterArray: Hamster[] = [];
   let loserHamsterArray: Hamster[] = [];
@@ -30,20 +33,20 @@ function GameInfo({ data, winner, loser }: Prop) {
     <div className="game-info">
       <div className="win-container">
         {winnerHamsterArray.length >= 1 ? (
-          <p>Har vunnit mot:</p>
+          <h2>Har vunnit mot</h2>
         ) : (
           <p>Hamstern har inte vunnit något ännu, in och rösta!</p>
         )}
 
         {winnerHamsterArray
           ? winnerHamsterArray.map((winn) => (
-              <span key={winn.id}>{winn.name} </span>
+              <span key={winn.id}>{winn.name}, </span>
             ))
           : null}
       </div>
       <div className="lose-container">
         {loserHamsterArray.length >= 1 ? (
-          <p>Har besegrats av</p>
+          <h2>Har besegrats av</h2>
         ) : (
           <p>Denna hamstern är hittils obesegrad!</p>
         )}

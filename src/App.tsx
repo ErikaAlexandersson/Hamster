@@ -1,11 +1,11 @@
 import "./App.css";
-import HamsterGallery from "./HamsterGallery";
 import NavBar from "./NavBar";
 import { Routes, Route } from "react-router-dom";
 import Home from "./HomePage";
 import Stats from "./Stats";
 import History from "./History";
 import Compete from "./Compete";
+import GetSearchFilter from "./GetSearchFilter";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/compete" element={<Compete />} />
-        <Route path="/galleri" element={<HamsterGallery />} />
+        <Route path="/galleri" element={<GetSearchFilter />} />
         <Route path="/stats" element={<Stats />} />
         <Route path="/history" element={<History />} />
       </Routes>

@@ -3,25 +3,22 @@ import { Hamster } from "./Interfaces";
 import "./HamsterGallery.css";
 import "animate.css";
 import HamsterCard from "./HamsterCard";
-import { useDispatch } from "react-redux";
-import { addHamster } from "./state/features/hamsterSlice";
 import AddHamster from "./AddHamster";
-function HamsterGallery() {
-  const [data, setData] = useState<Hamster[] | null>(null);
-  const [orderBy, setOrderBy] = useState();
+import { RootState } from "./state/store";
+import { useSelector, useDispatch } from "react-redux";
+import fixUrl from "./utils";
+import { showOrHideDelete } from "./state/features/deleteSlice";
+interface Prop {
+  hamstersArray: Hamster[] | null;
+}
 
+function HamsterGallery({ hamstersArray }: Prop) {
+  const hamsterData = useSelector((state: RootState) => state.hamster.value);
+  const [data, setData] = useState(hamstersArray);
+  const [searchHamster, setSearchHamster] = useState<string>("");
+
+  const [showDelete, setShowDelete] = useState<boolean>(false);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    async function getData() {
-      const response: Response = await fetch("http://localhost:1337/hamsters/");
-      const apiData: any = await response.json();
-      let data: any[] = apiData;
-      setData(apiData);
-      dispatch(addHamster(apiData));
-    }
-    getData();
-  }, []);
 
   function changeClassName(id: string) {
     setData(
@@ -40,37 +37,24 @@ function HamsterGallery() {
       })
     );
   }
-  let sortingArray = Object.assign([], data);
 
-  function selectedValue(e: any) {
-    let sort: string = e.target.value;
-    if (sort === "name") {
-      const hamstersSortedByName: Hamster[] = sortingArray?.sort(
-        (a: Hamster, b: Hamster) => a.name.localeCompare(b.name)
-      );
-      setData(hamstersSortedByName);
-    }
-    if (sort === "age") {
-      const hamstersSortedByAge: Hamster[] = sortingArray?.sort(
-        (a: Hamster, b: Hamster) => a.age - b.age
-      );
-      setData(hamstersSortedByAge);
-    }
-    if (sort === "Flest vinster") {
-      const hamsterSortedByGames: Hamster[] = sortingArray.sort(
-        (a: Hamster, b: Hamster) => b.wins - a.wins
-      );
-      setData(hamsterSortedByGames);
-    }
-    if (sort === "Flest förluster") {
-      const hamsterSortedByLoss: Hamster[] = sortingArray.sort(
-        (a: Hamster, b: Hamster) => b.defeats - a.defeats
-      );
-      setData(hamsterSortedByLoss);
-    }
+  function showOrNot() {
+    dispatch(showOrHideDelete(!showDelete));
+    setShowDelete(!showDelete);
   }
 
-  const hamsters = data?.map((hamster) => {
+  let sortingArray: Hamster[] = Object.assign([], hamstersArray);
+
+  let search = sortingArray.filter((hamster) => {
+    if (searchHamster.length <= 1) {
+      return true;
+    } else {
+      console.log(searchHamster.length);
+      return hamster.name.includes(searchHamster);
+    }
+  });
+
+  const hamsters = search?.map((hamster) => {
     return (
       <HamsterCard
         data={hamster}
@@ -83,18 +67,14 @@ function HamsterGallery() {
 
   return (
     <div className="hamster-gallery">
-      <header>
-        <h1>Galleriet</h1>
-        <p>Sortera efter: </p>
-        <select onChange={(e) => selectedValue(e)}>
-          <option value="Inget">Inget</option>
-          <option value="name">Namn</option>
-          <option value="age">Ålder</option>
-          <option value="Flest vinster">Flest vinster</option>
-          <option value="Flest förluster">Flest förluster</option>
-        </select>
-      </header>
       <AddHamster />
+      <button onClick={() => showOrNot()}>Ta bort hamster</button>
+      <input
+        type="text"
+        placeholder="Sök efter hamster"
+        value={searchHamster}
+        onChange={(event) => setSearchHamster(event.target.value)}
+      />
       <main>{hamsters}</main>
     </div>
   );

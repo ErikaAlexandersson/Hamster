@@ -19,13 +19,13 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 1337;
 
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(
   cors({
     methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
   })
 );
-app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/../dist"));
 app.use("/img", express.static(__dirname + "/public/img/img"));
 app.use((req, res, next) => {

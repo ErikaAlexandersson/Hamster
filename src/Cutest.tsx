@@ -16,6 +16,12 @@ function Cutest({ data }: Prop) {
         {data ? (
           <div>
             <h1>{data.name}</h1>
+            <img
+              id="trophy"
+              className="animate__animated animate__rubberBand "
+              src="/trophy.png"
+              alt=""
+            />
             <img src={fixUrl(`/img/${data.imgName}`)} alt="" />
 
             <h4>Antal matcher: {data.games}</h4>

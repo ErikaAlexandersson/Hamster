@@ -10,12 +10,13 @@ function HomePage() {
     async function getData() {
       const response: Response = await fetch(fixUrl("/hamsters/cutest"));
       const apiData: Hamster[] = await response.json();
-      console.log(fixUrl("/hamsters/cutest"));
-      if (apiData !== null && apiData.length >= 1) {
-        let random = Math.floor(Math.random() * apiData.length);
-        let randomHamster = apiData[random];
-        setData(randomHamster);
-        return;
+      console.log(apiData);
+      let sortedArray = apiData.sort((a, b) => b.wins - a.wins);
+      let random = Math.floor(Math.random() * 1);
+      if (sortedArray[0].wins === sortedArray[1].wins || sortedArray[2].wins) {
+        setData(sortedArray[random]);
+      } else {
+        setData(sortedArray[0]);
       }
     }
     getData();
@@ -30,12 +31,6 @@ function HomePage() {
       </p>
       <p>Må sötaste hamster vinna!</p>
       <h3>Ledande hamster just nu</h3>
-      {/* <img
-        id="trophy"
-        className="animate__animated animate__rubberBand"
-        src="/trophy.png"
-        alt=""
-      /> */}
       <Cutest data={data} />
     </div>
   );

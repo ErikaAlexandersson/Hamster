@@ -24,3 +24,11 @@
   display: flex;
   justify-content: space-around;
 }
+
+#trophy {
+  position: absolute;
+  right: 25rem;
+  top: 16rem;
+  border-radius: 0;
+  box-shadow: none;
+}

@@ -4,12 +4,24 @@ nav {
   align-items: center;
   text-transform: uppercase;
   letter-spacing: 0.3rem;
-  background-color: rgba(41, 52, 41, 0.638);
+  background-image: radial-gradient(
+    circle,
+    rgba(179, 131, 58, 0.5) 0%,
+    rgba(224, 225, 216, 0.376) 85%
+  );
   height: 4rem;
-  color: black;
   font-weight: 600;
+  font-size: 1.6rem;
+  text-shadow: -4px 0px 9px rgba(104, 96, 94, 0.7);
 }
 
 nav a:visited {
-  color: black;
+  color: rgba(0, 0, 0, 0.617);
+  list-style: none;
+}
+
+nav a:hover {
+  transform: scale(1.2);
+  transition: 1s;
+  font-weight: 900;
 }

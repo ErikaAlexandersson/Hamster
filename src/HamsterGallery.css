@@ -117,13 +117,24 @@ main {
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-  background-color: #bbb;
   color: black;
 }
 
 /* Style the back side */
 .flip-card-back {
-  background-color: dodgerblue;
-  color: white;
+  background: radial-gradient(
+    circle,
+    rgb(164, 145, 88) 0%,
+    rgb(244, 245, 247) 100%
+  );
+  border-radius: 20px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  color: black;
   transform: rotateY(180deg);
+}
+
+#img-error-text {
+  margin-top: 5rem;
 }

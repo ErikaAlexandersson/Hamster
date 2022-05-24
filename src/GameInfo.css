@@ -1,0 +1,8 @@
+.win-container {
+  border: 1px solid black;
+  margin-top: 1rem;
+}
+.lose-container {
+  margin-top: 2rem;
+  border: 1px solid black;
+}

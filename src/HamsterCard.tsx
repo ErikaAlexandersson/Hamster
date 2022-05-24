@@ -1,7 +1,11 @@
 import { Hamster } from "./Interfaces";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "./state/store";
 import fixUrl from "./utils";
+import { fixImgUrl } from "./utils";
 import GameInfo from "./GameInfo";
+import DeleteHamster from "./DeleteHamster";
 
 interface Prop {
   data: Hamster;
@@ -14,6 +18,10 @@ function HamsterCard({ data, className, changeClassName }: Prop) {
   const [transform, setTransform] = useState("0");
   const [winHistory, setWinHistory] = useState<any[] | null>(null);
   const [loserHistory, setLoserHistory] = useState<any[] | null>(null);
+  const showOrHideDelete = useSelector(
+    (state: RootState) => state.delete.value
+  );
+  const dispatch = useDispatch();
 
   function switchClassName(id: any) {
     setShowOrHide(!showOrHide);
@@ -61,12 +69,17 @@ function HamsterCard({ data, className, changeClassName }: Prop) {
         <div className="flip-card-front">
           <div className="hamster-container">
             <h1>{data.name}</h1>
+            {showOrHideDelete ? <DeleteHamster data={data} /> : null}
 
             <div className="grow-container">
               <div className="first-info">
                 <p>Hover to zoom</p>
                 <div className="img-container">
-                  <img src={fixUrl(`/img/${data.imgName}`)} alt="" />
+                  {data.imgName === "" ? (
+                    <p id="img-error-text">Hittade ingen bild...</p>
+                  ) : (
+                    <img src={fixImgUrl(data.imgName)} alt="" />
+                  )}
                 </div>
                 <div
                   className={
@@ -107,7 +120,9 @@ function HamsterCard({ data, className, changeClassName }: Prop) {
         </div>
         <div className="flip-card-back">
           <GameInfo data={data} winner={winHistory} loser={loserHistory} />
-          <button onClick={() => setTransform("0")}>Vänd tillbaka</button>
+          <button id="flip" onClick={() => setTransform("0")}>
+            Tillbaka
+          </button>
         </div>
       </div>
     </div>

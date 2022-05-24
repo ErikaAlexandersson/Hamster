@@ -6,11 +6,89 @@
 }
 
 .add-form {
-  width: 25rem;
-  height: 20rem;
-  border: 1px solid black;
-  position: absolute;
-  left: 40vw;
+  left: 3rem;
+  padding: 1rem;
+  min-width: 50vw;
+  height: 33rem;
+  border: 1px solid rgb(162, 47, 47);
   z-index: 1;
-  background-color: rgb(131, 112, 88);
+  background-color: rgba(182, 137, 92, 0.926);
+  position: absolute;
+}
+
+.error-message {
+  text-align: start;
+  padding-left: 1rem;
+  font-style: italic;
+  width: 10rem;
+  padding: 1rem;
+}
+.error-message p {
+  margin: 0;
+  font-size: 0.8rem;
+}
+.input-container {
+  height: 4rem;
+  display: flex;
+  align-items: center;
+}
+
+.input-container p {
+  display: inline-block;
+}
+
+.input-container input {
+  all: unset;
+}
+
+.input-container input {
+  border-bottom: 1px solid black;
+  margin: 1rem;
+}
+
+.input-container input:focus .floating-label {
+  color: rgb(71, 136, 193);
+}
+
+.floating-label:focus {
+  color: aquamarine;
+}
+.changePlaceHolder {
+  position: relative;
+  left: -14.4rem;
+  opacity: 0.5;
+  transform: translateY(-2rem);
+  transition: 1s;
+}
+
+.floating-label {
+  position: relative;
+  left: -10.4rem;
+}
+
+.check {
+  color: green;
+}
+
+.error {
+  color: red;
+  font-size: 3rem;
+  margin: 0;
+}
+
+.img-upload {
+  background-color: rgba(200, 166, 147, 0.487);
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  margin-top: 2rem;
+}
+.img-upload p {
+  font-size: 0.8rem;
+  font-style: italic;
+}
+.img-upload input {
+  margin-left: 3rem;
 }

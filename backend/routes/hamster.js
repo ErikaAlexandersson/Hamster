@@ -28,9 +28,10 @@ router.post("/", async (req, res) => {
     req.body.imgName === undefined ||
     req.body.wins === undefined ||
     req.body.defeats === undefined ||
-    req.body.defeats === undefined
+    req.body.games === undefined
   ) {
-    res.sendStatus(406);
+    console.log(req.body);
+    res.status(406).send(req.body);
     return;
   }
   const newDocRef = await addDoc(colRef, newHamster);
