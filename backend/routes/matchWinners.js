@@ -20,7 +20,7 @@ router.get("/:id", async (req, res) => {
     res.status(200).send(matches);
     return;
   }
-  res.status(404);
+  res.sendStatus(404);
   // .send("The provided id has not won any matches or does not exist");
 });
 

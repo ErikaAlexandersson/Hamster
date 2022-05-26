@@ -4,7 +4,6 @@
     rgba(179, 130, 58, 0.748) 0%,
     rgba(224, 225, 216, 0.376) 85%
   );
-  /* url(../public/hamster-war.jpg); */
   background-position: center, center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -13,11 +12,15 @@
   height: 100vh;
 }
 
-#trophy {
-  width: 200px;
+.home #trophy {
+  display: none;
 }
 
 .home h1 {
   margin: 0;
   padding: 1rem;
+}
+
+.home p {
+  margin: 0;
 }

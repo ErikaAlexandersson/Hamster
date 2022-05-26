@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Hamster } from "./Interfaces";
+import { fixImgUrl } from "./utils";
 import "./CompetingHamster.css";
 
 interface Prop {
@@ -27,11 +28,13 @@ function CompetingHamster({ vote, whatHamster }: Prop) {
       {data ? (
         <div className="competing-hamster" id={data.id}>
           <h1>{data.name}</h1>
-          <img src={`http://localhost:1337/img/${data.imgName}`} alt="" />
+          <img src={fixImgUrl(`${data.imgName}`)} alt="" />
           <p>Är {data.age} år gammal</p>
           <p>Älskar att {data.loves}</p>
           <p>Äter helst {data.favFood}</p>
-          <button onClick={(e) => vote(data)}>Rösta</button>
+          <button onClick={() => vote(data)}>
+            <span className="button_top">Rösta</span>
+          </button>
         </div>
       ) : (
         <p>Vi håller på att hämta två goa hamstrar...</p>

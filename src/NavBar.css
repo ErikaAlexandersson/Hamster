@@ -16,12 +16,25 @@ nav {
 }
 
 nav a:visited {
-  color: rgba(0, 0, 0, 0.617);
   list-style: none;
+  color: black;
 }
 
-nav a:hover {
-  transform: scale(1.2);
-  transition: 1s;
-  font-weight: 900;
+nav a {
+  text-decoration: none;
+}
+
+.link {
+  color: black;
+  opacity: 0.5;
+}
+
+.link:hover {
+  opacity: 1;
+}
+
+.link-active {
+  font-size: 2.3rem;
+  font-weight: 700;
+  transition: font-size 0.5s, font-weight 1s;
 }

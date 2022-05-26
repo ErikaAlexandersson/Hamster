@@ -15,4 +15,6 @@ export interface Matches {
   winnerId: string;
   loserId: string;
   time: number;
+  id: string;
+  date: null | string;
 }

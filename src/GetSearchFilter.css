@@ -1,0 +1,95 @@
+.sort-and-serach-container {
+  display: flex;
+  width: 100vw;
+  height: 10rem;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.sort {
+  height: 8rem;
+}
+
+.sort-and-serach-container .input-container {
+  color: black;
+}
+
+.sort-and-serach-container .floating-label-change {
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+.sort-and-serach-container .floating-label {
+  position: relative;
+  z-index: -1;
+  left: 0.1rem;
+  top: 2.1rem;
+  padding: 0.5rem;
+  transition: top 1s, left 1s, z-index 1s;
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+.custom-dropdown-container-open {
+  position: absolute;
+  height: fit-content;
+  text-align: left;
+  line-height: 1.8rem;
+  letter-spacing: 2px;
+  z-index: 4;
+  padding: 1rem;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: rgba(0, 0, 0, 0.739);
+  margin-top: -1rem;
+}
+
+.custom-dropdown-container-open p:hover {
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.custom-dropdown-container-open p:last-child {
+  color: rgb(0, 0, 0);
+  text-align: center;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.custom-dropdown-container-close {
+  position: absolute;
+  margin-top: -1.2rem;
+  border-bottom: 1px solid black;
+  width: 11rem;
+  overflow: hidden;
+  height: 1px;
+}
+
+.custom-sort h3 {
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.478);
+}
+
+.custom-sort-header {
+  display: flex;
+  width: 11rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.custom-sort-header p {
+  font-size: 2rem;
+  font-weight: 900;
+  margin: 0;
+  margin-right: 0.5rem;
+  height: 2rem;
+}
+
+.custom-sort {
+  margin-top: 1.8rem;
+}

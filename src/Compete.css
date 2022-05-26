@@ -1,8 +1,8 @@
 .compete {
   background-image: radial-gradient(
       circle,
-      rgba(151, 160, 143, 0.829) 0%,
-      rgba(64, 68, 48, 0.67) 85%
+      rgba(255, 224, 179, 0.855) 0%,
+      rgba(240, 240, 237, 0.848) 85%
     ),
     url(/hamster-war.jpg);
   background-position: center, center;
@@ -18,6 +18,10 @@
   grid-template-columns: 1fr 1fr;
 }
 
+.compete h1 {
+  margin: 0;
+}
+
 #counter {
   font-size: 3rem;
   font-weight: 600;
@@ -28,6 +32,28 @@
   margin: auto;
 }
 #trophy {
+  position: absolute;
+  top: 20%;
+  right: 25%;
   width: 100px;
   height: 100px;
+}
+
+.compete .competing-hamster {
+  margin-top: 2rem;
+  height: 450px;
+  width: 300px;
+}
+.compete .competing-hamster img {
+  width: 200px;
+  height: 200px;
+}
+
+.compete .cutest {
+  margin-top: 2rem;
+  height: 450px;
+  border: none;
+}
+.winner-container .cutest .cutest-container div {
+  width: 300px;
 }

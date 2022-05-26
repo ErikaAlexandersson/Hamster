@@ -1,0 +1,179 @@
+.hamster-container img {
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
+
+.hamster-container img:hover {
+  width: 250px;
+  height: 250px;
+  margin-top: -20px;
+  margin-left: -20px;
+  transition: width 3s, height 3s, margin-left 3s, margin-top 3s;
+}
+
+.hamster-container {
+  background: radial-gradient(
+    circle,
+    rgba(164, 145, 88, 0.655) 0%,
+    rgba(244, 245, 247, 0.9261905445772058) 100%
+  );
+  width: 300px;
+  height: 400px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.img-container {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+.info {
+  width: fit-content;
+  padding: 0.4rem;
+  margin: auto;
+  margin-top: 0.9rem;
+  height: 20px;
+  border-radius: 5px;
+  background: linear-gradient(145deg, #928e8b, #706c69);
+  box-shadow: 2px 2px 2px #232222, -1px -1.5px 1.5px #504a45;
+  cursor: pointer;
+  color: black;
+}
+
+.overflow-container {
+  width: 50px;
+  height: 50px;
+  margin: auto;
+  border-radius: 20%;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.overflow-container-clicked {
+  position: absolute;
+  bottom: 1rem;
+  right: 0;
+  left: 0;
+  margin: auto;
+  background: radial-gradient(
+    circle,
+    rgba(193, 171, 110, 0.873) 20%,
+    rgba(220, 225, 231, 1) 100%
+  );
+  width: 280px;
+  height: 320px;
+  border-radius: 5%;
+  z-index: 3;
+  overflow: hidden;
+  transition: width 2s, height 2s, margin-top 2s, border-radius 4s,
+    background-color 4s;
+  color: rgb(17, 17, 16);
+  font-size: 1rem;
+  text-transform: capitalize;
+}
+.overflow-container-clicked .info {
+  margin-right: 1.8rem;
+  background: linear-gradient(145deg, #928e8b, #706c69);
+  border-radius: 20%;
+}
+.overflow-container-clicked .send {
+  width: fit-content;
+  padding: 0.4rem;
+  margin: auto;
+  margin-top: 1rem;
+  height: 20px;
+  border-radius: 5px;
+  background: linear-gradient(145deg, #928e8b, #706c69);
+  box-shadow: 2px 2px 2px #232222, -2px -1px 1px #504a45;
+  cursor: pointer;
+  color: black;
+}
+
+.overflow-container-clicked .text-container {
+  margin-top: -0.2rem;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 400px;
+  margin-top: 2rem;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  color: black;
+}
+
+/* Style the back side */
+.flip-card-back {
+  background: radial-gradient(
+    circle,
+    rgb(164, 145, 88) 0%,
+    rgb(244, 245, 247) 100%
+  );
+  border-radius: 20px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  color: black;
+  transform: rotateY(180deg);
+}
+.flip-card-back .send {
+  position: absolute;
+  left: 41%;
+  bottom: 1rem;
+  width: 4rem;
+  box-shadow: 2px 2px 2px #232222, -2px -1px 1px #504a45;
+}
+
+#img-error-text {
+  margin-top: 5rem;
+}
+
+.delete-hamster .trash-can {
+  margin: 0;
+  width: fit-content;
+  padding: 1rem;
+  position: absolute;
+  right: 2px;
+  cursor: pointer;
+}
+
+.delete-hamster .trash-can::hover .trash-can::after {
+  content: "Ta bort hamstern";
+}

@@ -1,14 +1,41 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { useState } from "react";
 import "./NavBar.css";
 
 function NavBar() {
+  const [isActive, setIsActive] = useState("false");
   return (
     <nav>
-      <Link to="/"> Hem</Link>
-      <Link to="/compete"> Tävla </Link>
-      <Link to="/galleri"> Galleri </Link>
-      <Link to="/stats"> Statistik </Link>
-      <Link to="/history"> Historik </Link>
+      <NavLink
+        to="/"
+        className={({ isActive }) => (isActive ? "link-active" : "link")}
+      >
+        Hem
+      </NavLink>
+      <NavLink
+        to="/compete"
+        className={({ isActive }) => (isActive ? "link-active" : "link")}
+      >
+        Tävla
+      </NavLink>
+      <NavLink
+        to="/galleri"
+        className={({ isActive }) => (isActive ? "link-active" : "link")}
+      >
+        Galleri
+      </NavLink>
+      <NavLink
+        to="/stats"
+        className={({ isActive }) => (isActive ? "link-active" : "link")}
+      >
+        Statistik
+      </NavLink>
+      <NavLink
+        to="/history"
+        className={({ isActive }) => (isActive ? "link-active" : "link")}
+      >
+        Historik
+      </NavLink>
     </nav>
   );
 }

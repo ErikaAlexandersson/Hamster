@@ -1,94 +1,141 @@
-.add-form input {
-  display: block;
-  padding: 0.3rem;
-  width: 15rem;
-  margin: 1rem;
-}
-
 .add-form {
-  left: 3rem;
+  width: 50vw;
+  height: 85vh;
+  background-color: rgba(62, 58, 53, 0.951);
+  margin-left: 25%;
+  margin-right: 35%;
+  margin-top: -13rem;
+  position: fixed;
+  z-index: 2;
+  border-radius: 20px;
   padding: 1rem;
-  min-width: 50vw;
-  height: 33rem;
-  border: 1px solid rgb(162, 47, 47);
-  z-index: 1;
-  background-color: rgba(182, 137, 92, 0.926);
+  overflow: scroll;
+}
+
+.add-hamster-blur {
+  width: 100vw;
+  height: 1000rem;
   position: absolute;
+  background-color: rgba(255, 255, 255, 0.618);
+  backdrop-filter: blur(100px);
+  z-index: 3;
+  transition: background-color 0.5s, z-index 0.5s;
 }
 
-.error-message {
-  text-align: start;
-  padding-left: 1rem;
-  font-style: italic;
-  width: 10rem;
-  padding: 1rem;
+.floating-label {
+  position: relative;
+  z-index: -1;
+  left: 0.1rem;
+  top: 2.1rem;
+  padding: 0.5rem;
 }
-.error-message p {
-  margin: 0;
-  font-size: 0.8rem;
+.floating-label-change {
+  position: relative;
+  z-index: -1;
+  left: 0rem;
+  top: 0.5rem;
+  padding: 0.5rem;
+  opacity: 0.5;
+  transition: top 1s, opacity 1s, left 1s;
 }
-.input-container {
-  height: 4rem;
-  display: flex;
-  align-items: center;
-}
-
-.input-container p {
-  display: inline-block;
-}
-
 .input-container input {
   all: unset;
 }
 
 .input-container input {
+  margin: 0.3rem;
+  width: 20rem;
+  padding: 0.2rem;
+  text-align: left;
   border-bottom: 1px solid black;
-  margin: 1rem;
 }
 
-.input-container input:focus .floating-label {
-  color: rgb(71, 136, 193);
+.input-container {
+  width: 20rem;
+  color: antiquewhite;
+  text-align: left;
 }
 
-.floating-label:focus {
-  color: aquamarine;
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
-.changePlaceHolder {
+
+.compulsory {
+  margin-top: 1.2rem;
+}
+.error-message p {
+  margin: 0;
+}
+.error-message {
   position: relative;
-  left: -14.4rem;
-  opacity: 0.5;
-  transform: translateY(-2rem);
-  transition: 1s;
+  background-color: rgba(234, 228, 223, 0.46);
+  border-radius: 10px;
+  font-style: italic;
+  width: 70%;
+  padding: 0.2rem;
 }
 
-.floating-label {
-  position: relative;
-  left: -10.4rem;
-}
-
-.check {
+.ok {
   color: green;
 }
 
-.error {
-  color: red;
-  font-size: 3rem;
-  margin: 0;
+.image-container img {
+  width: 200px;
+  height: 200px;
+}
+.image-container {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  margin-top: -1.5rem;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
-.img-upload {
-  background-color: rgba(200, 166, 147, 0.487);
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-  width: 50%;
+input[type="file"] {
+  opacity: 0;
+}
+.close {
+  position: relative;
+  left: 23rem;
+  width: fit-content;
+  padding: 0.3rem;
+  margin: 0;
+  height: 20px;
+  border-radius: 5px;
+  background: linear-gradient(145deg, #928e8b, #706c69);
+  box-shadow: 3px 3px 3px #232222, -3px -5px 5px #504a45;
+  cursor: pointer;
+  color: black;
+}
+
+.custom-file-upload-btn {
+  width: fit-content;
+  padding: 0.4rem;
   margin: auto;
-  text-align: center;
-  margin-top: 2rem;
+  margin-top: 4rem;
+  height: 20px;
+  border-radius: 5px;
+  background: linear-gradient(145deg, #928e8b, #706c69);
+  box-shadow: 3px 3px 3px #232222, -3px -5px 5px #504a45;
+  cursor: pointer;
+  color: black;
 }
-.img-upload p {
-  font-size: 0.8rem;
-  font-style: italic;
+.send {
+  padding: 0.4rem;
+  margin: auto;
+  margin-top: 4rem;
+  border-radius: 5px;
+  background: linear-gradient(145deg, #928e8b, #706c69);
+  box-shadow: 3px 3px 3px #232222, -3px -5px 5px #504a45;
+  cursor: pointer;
+  color: black;
 }
-.img-upload input {
-  margin-left: 3rem;
+
+.send:disabled {
+  color: aliceblue;
+  opacity: 0.3;
 }

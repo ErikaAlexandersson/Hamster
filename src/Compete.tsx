@@ -102,7 +102,9 @@ function Compete() {
             alt=""
           />
           <Cutest key={counter} data={winner} />
-          <button onClick={() => refresh()}>Starta ny match!</button>
+          <button onClick={() => refresh()}>
+            <span className="button_top">Starta ny match</span>
+          </button>
         </div>
       ) : (
         <main>

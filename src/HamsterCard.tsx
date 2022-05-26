@@ -1,7 +1,6 @@
 import { Hamster } from "./Interfaces";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "./state/store";
 import fixUrl from "./utils";
 import { fixImgUrl } from "./utils";
 import GameInfo from "./GameInfo";
@@ -18,10 +17,6 @@ function HamsterCard({ data, className, changeClassName }: Prop) {
   const [transform, setTransform] = useState("0");
   const [winHistory, setWinHistory] = useState<any[] | null>(null);
   const [loserHistory, setLoserHistory] = useState<any[] | null>(null);
-  const showOrHideDelete = useSelector(
-    (state: RootState) => state.delete.value
-  );
-  const dispatch = useDispatch();
 
   function switchClassName(id: any) {
     setShowOrHide(!showOrHide);
@@ -41,23 +36,29 @@ function HamsterCard({ data, className, changeClassName }: Prop) {
   }
 
   async function getStats() {
+    console.log("Data.id", data.id, "Namn", data.name);
     const winnerResponse: Response = await fetch(
       fixUrl(`/matchWinners/${data.id}`)
     );
-    const winnerData: any = await winnerResponse.json();
-    let winner: any[] = winnerData;
-    setWinHistory(winner);
+    if (winnerResponse.status === 404) {
+      console.log("404");
+      setWinHistory([]);
+    } else {
+      const winnerData: any = await winnerResponse.json();
+      setWinHistory(winnerData);
+    }
 
     const loserResponse: Response = await fetch(
       fixUrl(`/matchLosers/${data.id}`)
     );
-    const loserData: any = await loserResponse.json();
-    let loser: any[] = loserData;
-    setLoserHistory(loser);
-    if (!winnerResponse.ok) {
-      console.log("Nope det finns inget");
+    if (loserResponse.status === 404) {
+      console.log(404);
+      setLoserHistory([]);
+    } else {
+      const loserData: any = await loserResponse.json();
+      let loser: any[] = loserData;
+      setLoserHistory(loser);
     }
-    return winnerData;
   }
 
   return (
@@ -68,12 +69,12 @@ function HamsterCard({ data, className, changeClassName }: Prop) {
       >
         <div className="flip-card-front">
           <div className="hamster-container">
+            <DeleteHamster data={data} />
             <h1>{data.name}</h1>
-            {showOrHideDelete ? <DeleteHamster data={data} /> : null}
 
             <div className="grow-container">
               <div className="first-info">
-                <p>Hover to zoom</p>
+                <p>Håll över bilden för att zooma</p>
                 <div className="img-container">
                   {data.imgName === "" ? (
                     <p id="img-error-text">Hittade ingen bild...</p>
@@ -93,10 +94,10 @@ function HamsterCard({ data, className, changeClassName }: Prop) {
                       className="info"
                       onClick={() => switchClassName(data.id)}
                     >
-                      {showOrHide ? "v" : "i"}
+                      {showOrHide ? "X" : "info"}
                     </p>
                     <p>Ålder: {data.age}</p>
-                    <p>Gillar: {data.loves}</p>
+                    <p>Gillar att: {data.loves}</p>
                     <p>Favoritmat: {data.favFood}</p>
                     {showOrHide ? (
                       <div className="animated-container">
@@ -109,7 +110,9 @@ function HamsterCard({ data, className, changeClassName }: Prop) {
                         <p className="animate__animated animate__fadeInLeft animate__delay-4s">
                           Antal förluster: {data.defeats}
                         </p>
-                        <button onClick={() => flipCard()}>Se statistik</button>
+                        <p className="send" onClick={() => flipCard()}>
+                          Se statistik
+                        </p>
                       </div>
                     ) : null}
                   </div>
@@ -119,10 +122,13 @@ function HamsterCard({ data, className, changeClassName }: Prop) {
           </div>
         </div>
         <div className="flip-card-back">
-          <GameInfo data={data} winner={winHistory} loser={loserHistory} />
-          <button id="flip" onClick={() => setTransform("0")}>
+          {winHistory || loserHistory ? (
+            <GameInfo data={data} winner={winHistory} loser={loserHistory} />
+          ) : null}
+
+          <p className="send" onClick={() => setTransform("0")}>
             Tillbaka
-          </button>
+          </p>
         </div>
       </div>
     </div>

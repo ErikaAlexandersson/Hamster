@@ -20,7 +20,6 @@ function DeleteHamster({ data }: Prop) {
     fetch(fixUrl(`/hamsters/${data.id}`), {
       method: "DELETE",
     });
-    console.log(hamsterData);
     const filtredArray = hamsterData.filter((hamster) => {
       return hamster.id !== data.id;
     });
@@ -34,13 +33,22 @@ function DeleteHamster({ data }: Prop) {
       {areYouSure ? (
         <div>
           <p>Vill du verkligen ta bort {data.name}</p>
-          <button onClick={() => deleteHamster()}>Ja</button>{" "}
-          <button onClick={() => setAreYouSure(!areYouSure)}>Nej</button>
+          <button onClick={() => deleteHamster()}>
+            <span className="button_top">Ja</span>
+          </button>
+
+          <button onClick={() => setAreYouSure(!areYouSure)}>
+            <span className="button_top">Nej</span>
+          </button>
         </div>
       ) : (
-        <button onClick={() => setAreYouSure(!areYouSure)}>
-          Delete hamster
-        </button>
+        <p
+          title="Klicka för att ta bort hamstern"
+          className="trash-can"
+          onClick={() => setAreYouSure(!areYouSure)}
+        >
+          &#128465;
+        </p>
       )}
     </div>
   );

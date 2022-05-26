@@ -86,31 +86,50 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/cutest", async (req, res) => {
-  let allHamsters = [];
-  let score = [];
+  // let allHamsters = [];
+  // let score = [];
+  // const snapshot = await getDocs(colRef);
+
+  // snapshot.docs.forEach((docSnapshot) => {
+  //   allHamsters.push({ ...docSnapshot.data(), id: docSnapshot.id });
+  // });
+
+  // //skapa en nyckel sum = wins - defeats
+  // allHamsters.forEach((h) => {
+  //   const sum = h.wins - h.defeats;
+  //   return score.push({ ...h, sum: sum });
+  // });
+
+  // //iterate and check highest sum
+  // let biggestVal = Math.max.apply(
+  //   Math,
+  //   score.map((o) => o.sum)
+  // );
+  // //pick cutest hamster with biggest sum
+  // let bestHamsters = score.filter((i) => i.sum === biggestVal);
+  // // then remove sum key
+  // bestHamsters.filter((i) => delete i.sum);
+
+  // return res.status(200).send(bestHamsters);
+  let hamsters = [];
+  let cutest = [];
+  const colRef = query(collection(db, "hamsters"), orderBy("wins", "desc"));
   const snapshot = await getDocs(colRef);
-
-  snapshot.docs.forEach((docSnapshot) => {
-    allHamsters.push({ ...docSnapshot.data(), id: docSnapshot.id });
+  snapshot.docs.forEach((snapshot) => {
+    hamsters.push({ ...snapshot.data(), id: snapshot.id });
   });
-
-  //skapa en nyckel sum = wins - defeats
-  allHamsters.forEach((h) => {
-    const sum = h.wins - h.defeats;
-    return score.push({ ...h, sum: sum });
+  let difference = hamsters[0].wins - hamsters[0].defeats;
+  hamsters.forEach((hamster) => {
+    let currentDifference = hamster.wins - hamster.defeats;
+    if (currentDifference > difference) {
+      difference = currentDifference;
+      cutest = [hamster];
+    } else if (currentDifference === difference) {
+      cutest.push(hamster);
+    }
   });
-
-  //iterate and check highest sum
-  let biggestVal = Math.max.apply(
-    Math,
-    score.map((o) => o.sum)
-  );
-  //pick cutest hamster with biggest sum
-  let bestHamsters = score.filter((i) => i.sum === biggestVal);
-  // then remove sum key
-  bestHamsters.filter((i) => delete i.sum);
-
-  return res.status(200).send(bestHamsters);
+  res.status(200).send(cutest);
+  return;
 });
 //hämtar alla hamstrar med id
 

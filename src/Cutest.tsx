@@ -1,6 +1,6 @@
 import { Hamster } from "./Interfaces";
 import "./Cutest.css";
-import fixUrl from "./utils";
+import { fixImgUrl } from "./utils";
 
 interface Prop {
   data: Hamster | null;
@@ -22,7 +22,7 @@ function Cutest({ data }: Prop) {
               src="/trophy.png"
               alt=""
             />
-            <img src={fixUrl(`/img/${data.imgName}`)} alt="" />
+            <img src={fixImgUrl(`${data.imgName}`)} alt="" />
 
             <h4>Antal matcher: {data.games}</h4>
             <div className="stats-container">

@@ -1,23 +1,35 @@
 .game-card {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 10% 40% 40% 10%;
+  align-items: center;
 }
 
 .game-card img {
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
 }
 .winners {
-  border: 1px solid black;
+  border-bottom: 1px solid black;
 }
 .losers {
-  border: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.winners .img-container {
+  width: 100px;
+  height: 100px;
+}
+.losers .img-container {
+  width: 100px;
+  height: 100px;
 }
 
 .game-number {
-  border: 1px solid black;
   margin: 0;
   text-align: center;
   padding-top: 5rem;
   font-size: 1rem;
+}
+.trash-can {
+  align-self: center;
 }

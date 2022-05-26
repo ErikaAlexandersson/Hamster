@@ -1,0 +1,35 @@
+.history {
+  min-height: 100vh;
+}
+
+.score-container {
+  margin: auto;
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+}
+.game-cards {
+  width: 80%;
+  margin: auto;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-container p {
+  font-size: 4rem;
+  margin: 0;
+}
+.header-container h1 {
+  margin: 0;
+  cursor: pointer;
+}
+.games-container {
+  margin-bottom: 4rem;
+}
+.games-container button {
+  margin-top: 2rem;
+}

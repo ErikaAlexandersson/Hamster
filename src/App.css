@@ -2,6 +2,17 @@
 
 .App {
   text-align: center;
+  background-image: radial-gradient(
+    circle,
+    rgba(179, 130, 58, 0.748) 0%,
+    rgba(224, 225, 216, 0.376) 85%
+  );
+  /* url(../public/hamster-war.jpg); */
+  background-position: center, center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: fit-content;
 }
 
 * {
@@ -10,4 +21,33 @@
 
 h1 {
   font-weight: 500;
+}
+
+button {
+  /* Variables */
+  --button_radius: 0.25em;
+  --button_color: #d7d3cfea;
+  --button_outline_color: #99958fae;
+
+  font-size: 1rem;
+  border: none;
+  border-radius: var(--button_radius);
+  background: var(--button_outline_color);
+}
+
+.button_top {
+  display: block;
+  box-sizing: border-box;
+  border: 1px solid var(--button_outline_color);
+  border-radius: var(--button_radius);
+  padding: 0.35em 0.6em;
+  background: var(--button_color);
+  color: black;
+  transform: translateY(-0.2em);
+  transition: transform 0.1s ease;
+}
+
+button:active .button_top {
+  /* Push the button downwards when pressed */
+  transform: translateY(0);
 }
