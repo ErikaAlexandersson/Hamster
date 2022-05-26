@@ -18,7 +18,6 @@ function GameInfo({ data, winner, loser }: Prop) {
   const winnerArray = winner?.map((winn) => {
     let winnerInfo = hamsterData.find((hamster) => hamster.id === winn.loserId);
     if (winnerInfo !== undefined) {
-      console.log("Detta är winnerInfo", winnerInfo);
       winnerHamsterArray.push(winnerInfo);
     }
     return winnerInfo;

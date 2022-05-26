@@ -18,21 +18,24 @@ function GameCard({ data }: Prop) {
   const reRenderData = useSelector((state: RootState) => state.reRender.value);
   const matchArray = useSelector((state: RootState) => state.matches.value);
   // TODO: Fixa så att APIet kan ta imot annat än hamster
-  useEffect(() => {
-    async function getWinner() {
-      const response: Response = await fetch(
-        fixUrl(`/hamsters/${data.winnerId}`)
-      );
-      const winningHamster: Hamster = await response.json();
-      setWinner(winningHamster);
-    }
-    async function getLooser() {
-      const response: Response = await fetch(
-        fixUrl(`/hamsters/${data.loserId}`)
-      );
-      const losingHamster: Hamster = await response.json();
+  async function getLooser() {
+    const response: Response = await fetch(fixUrl(`/hamsters/${data.loserId}`));
+    const losingHamster: Hamster = await response.json();
+    if (response.status === 404) {
+      console.log("404");
+      setLoser(null);
+    } else {
       setLoser(losingHamster);
     }
+  }
+  async function getWinner() {
+    const response: Response = await fetch(
+      fixUrl(`/hamsters/${data.winnerId}`)
+    );
+    const winningHamster: Hamster = await response.json();
+    setWinner(winningHamster);
+  }
+  useEffect(() => {
     getWinner();
     getLooser();
   }, []);
@@ -57,19 +60,14 @@ function GameCard({ data }: Prop) {
   const dispatch = useDispatch();
 
   function deleteGame(e: any) {
-    console.log(e.target.id);
-    fetch(fixUrl(`/hamsters/${e.target.id}`), {
+    fetch(fixUrl(`/matches/${data.id}`), {
       method: "DELETE",
     });
     const filtredArray = matchArray.filter((match) => {
-      if (match.id === e.target.id) {
-        console.log("yes");
-      }
-      let mabyTheOne = match.id !== e.target.id;
-      return match.id !== e.target.id;
+      return match.id !== data.id;
     });
     console.log(filtredArray);
-    // dispatch(reRenderHamster(!reRenderData));
+    dispatch(reRenderHamster(!reRenderData));
     dispatch(addMatches(filtredArray));
   }
 

@@ -31,7 +31,7 @@ function DeleteHamster({ data }: Prop) {
   return (
     <div className="delete-hamster">
       {areYouSure ? (
-        <div>
+        <div className="are-you-sure">
           <p>Vill du verkligen ta bort {data.name}</p>
           <button onClick={() => deleteHamster()}>
             <span className="button_top">Ja</span>

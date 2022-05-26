@@ -19,14 +19,16 @@ function MatchByDate({ data }: Games) {
     setEnd(end + 10);
   }
 
-  function createKey(max: number) {
-    return Math.floor(Math.random() * max);
+  function createIndex() {
+    let key = new Date().getTime();
+    let random = Math.floor(Math.random() * 100);
+    return key + random;
   }
 
-  const GameCards = shortList.map((hamster, index) => {
+  const GameCards = shortList.map((hamster) => {
     return (
       <div>
-        <GameCard data={hamster} key={createKey(10000)} />
+        <GameCard data={hamster} key={createIndex() + "n"} />
       </div>
     );
   });

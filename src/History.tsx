@@ -29,33 +29,36 @@ function History() {
     getData();
   }, []);
 
-  // useEffect(() => {
-  //   setData(matches);
-  // }, [reRenderData]);
-
+  useEffect(() => {
+    setData(matches);
+  }, [reRenderData]);
   const copyOfArray: Matches[] = Object.assign([], data);
 
   const matchesSortedByTime = copyOfArray?.sort((a, b) => b.time - a.time);
 
   let newThing = null;
 
-  if (data) {
-    newThing = [[data[0]]];
-    for (let i = 1; data.length > i; i++) {
-      if (data[i].date === newThing[newThing.length - 1][0].date) {
-        newThing[newThing.length - 1].push(data[i]);
+  if (matchesSortedByTime) {
+    newThing = [[matchesSortedByTime[0]]];
+    for (let i = 1; matchesSortedByTime.length > i; i++) {
+      if (
+        matchesSortedByTime[i].date === newThing[newThing.length - 1][0].date
+      ) {
+        newThing[newThing.length - 1].push(matchesSortedByTime[i]);
       } else {
-        newThing.push([data[i]]);
+        newThing.push([matchesSortedByTime[i]]);
       }
     }
   }
 
-  function createIndex(max: number) {
-    return Math.floor(Math.random() * max);
+  function createIndex() {
+    let key = new Date().getTime();
+    let random = Math.floor(Math.random() * 100);
+    return key + random;
   }
 
-  const newData = newThing?.map((date, index) => {
-    return <MatchByDate data={date} key={createIndex(1000)} />;
+  const newData = newThing?.map((date) => {
+    return <MatchByDate data={date} key={createIndex() + 10 + "p"} />;
   });
 
   return (
