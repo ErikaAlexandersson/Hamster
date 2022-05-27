@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import GameCard from "./GameCard";
-import { Matches } from "./Interfaces";
-import { RootState } from "./state/store";
+import { Matches } from "../Interfaces";
+import { RootState } from "../state/store";
 import { useDispatch, useSelector } from "react-redux";
-import fixUrl from "./utils";
+import fixUrl from "../utils";
 import MatchByDate from "./MatchByDate";
-import { addMatches } from "./state/features/matchesSlice";
+import { addMatches } from "../state/features/matchesSlice";
+import "./History.css";
 function History() {
   const matches = useSelector((state: RootState) => state.matches.value);
   const reRenderData = useSelector((state: RootState) => state.reRender.value);
   const [data, setData] = useState<Matches[] | null>(null);
+  const [sortedData, setSortedData] = useState([]);
   const dispatch = useDispatch();
 
   async function getData() {
@@ -53,7 +55,7 @@ function History() {
 
   function createIndex() {
     let key = new Date().getTime();
-    let random = Math.floor(Math.random() * 100);
+    let random = Math.floor(Math.random() * 10000000);
     return key + random;
   }
 
@@ -61,12 +63,7 @@ function History() {
     return <MatchByDate data={date} key={createIndex() + 10 + "p"} />;
   });
 
-  return (
-    <div className="history">
-      <h3>Välj ett datum i listan för att se vilka hamstrar som tävlade då</h3>
-      {newData}
-    </div>
-  );
+  return <>{data ? <div className="history"> {newData}</div> : null}</>;
 }
 
 export default History;

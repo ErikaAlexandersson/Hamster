@@ -1,8 +1,8 @@
-import { Hamster } from "./Interfaces";
+import { Hamster } from "../Interfaces";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import fixUrl from "./utils";
-import { fixImgUrl } from "./utils";
+import fixUrl from "../utils";
+import { fixImgUrl } from "../utils";
 import GameInfo from "./GameInfo";
 import DeleteHamster from "./DeleteHamster";
 

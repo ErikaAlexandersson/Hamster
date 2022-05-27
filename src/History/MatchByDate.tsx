@@ -1,4 +1,4 @@
-import { Hamster, Matches } from "./Interfaces";
+import { Hamster, Matches } from "../Interfaces";
 import GameCard from "./GameCard";
 import "./MatchByDate.css";
 import { useState } from "react";
@@ -19,42 +19,34 @@ function MatchByDate({ data }: Games) {
     setEnd(end + 10);
   }
 
-  function createIndex() {
-    let key = new Date().getTime();
-    let random = Math.floor(Math.random() * 100);
-    return key + random;
-  }
-
-  const GameCards = shortList.map((hamster) => {
-    return (
-      <div>
-        <GameCard data={hamster} key={createIndex() + "n"} />
-      </div>
-    );
-  });
-
   return (
     <div className="games-container">
-      {data ? (
-        <div className="header-container">
-          <h1 onClick={() => setShowOrHide(!showOrHide)}>{data[0].date}</h1>
-        </div>
-      ) : null}
+      <div className="holder-of-the-header">
+        {data[0] !== undefined ? (
+          <div className="header-container">
+            <h1 onClick={() => setShowOrHide(!showOrHide)}>{data[0].date}</h1>
+          </div>
+        ) : null}
+      </div>
       {showOrHide ? <p>Tryck på datumet för att stänga fliken</p> : null}
       {showOrHide ? (
-        <>
+        <div className="holder-of-the-cards">
           <div className="score-container">
             <h2>Vinnare</h2>
             <h2>Förlorare</h2>
           </div>
-          <div className="game-cards">{GameCards}</div>
+          <div className="game-cards">
+            {shortList.map((matches) => (
+              <GameCard data={matches} key={matches.id} />
+            ))}
+          </div>
           <button onClick={() => getNextTen()}>
             <span className="button_top">Hämta fler...</span>
           </button>
           <button onClick={() => setShowOrHide(!showOrHide)}>
             <span className="button_top">Stäng denna fliken</span>
           </button>
-        </>
+        </div>
       ) : null}
     </div>
   );

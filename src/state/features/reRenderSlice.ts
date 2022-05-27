@@ -13,7 +13,6 @@ const reRenderSlice = createSlice({
   initialState,
   reducers: {
     reRenderHamster: (state, { payload }) => {
-      console.log(payload);
       state.value = payload;
     },
   },

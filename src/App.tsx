@@ -1,11 +1,11 @@
 import "./App.css";
-import NavBar from "./NavBar";
+import NavBar from "./NavBar/NavBar";
 import { Routes, Route } from "react-router-dom";
 import Home from "./HomePage";
-import Stats from "./Stats";
-import History from "./History";
-import Compete from "./Compete";
-import GetSearchFilter from "./GetSearchFilter";
+import Stats from "./Stats/Stats";
+import History from "./History/History";
+import Compete from "./Compete/Compete";
+import GetSearchFilter from "./HamsterGallery/GetSearchFilter";
 
 function App() {
   return (

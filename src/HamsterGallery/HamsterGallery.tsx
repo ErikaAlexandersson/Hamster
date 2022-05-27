@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { Hamster } from "./Interfaces";
+import { Hamster } from "../Interfaces";
 import "./HamsterGallery.css";
 import "animate.css";
 import HamsterCard from "./HamsterCard";
 import AddHamster from "./AddHamster";
-import { RootState } from "./state/store";
-import { searchHamster } from "./state/features/searchSlice";
+import { RootState } from "../state/store";
+import { searchHamster } from "../state/features/searchSlice";
 import { useSelector, useDispatch } from "react-redux";
 import "./HamsterCard.css";
 interface Prop {

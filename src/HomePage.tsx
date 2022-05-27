@@ -37,7 +37,7 @@ function HomePage() {
       <p>Självklart finns det även historik och statistik på alla matcher</p>
       <p>Må sötaste hamster vinna!</p>
       <h3>Ledande hamster just nu</h3>
-      <Cutest data={data} />
+      <Cutest data={data} getData={getData} />
     </div>
   );
 }

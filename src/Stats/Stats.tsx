@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Cutest from "./Cutest";
-import { Hamster } from "./Interfaces";
+import Cutest from "../Cutest";
+import { Hamster } from "../Interfaces";
 import "./Stats.css";
-import fixUrl from "./utils";
+import fixUrl from "../utils";
 
 function Stats() {
   const [winners, setWinners] = useState<Hamster[] | null>(null);

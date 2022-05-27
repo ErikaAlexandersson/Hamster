@@ -1,13 +1,13 @@
 import { useState } from "react";
 import "./AddHamster.css";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import app from "./FireBaseFrontEnd";
-import fixUrl from "./utils";
+import app from "../FireBaseFrontEnd";
+import fixUrl from "../utils";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "./state/store";
-import { addHamster } from "./state/features/hamsterSlice";
-import { Hamster } from "./Interfaces";
-import { reRenderHamster } from "./state/features/reRenderSlice";
+import { RootState } from "../state/store";
+import { addHamster } from "../state/features/hamsterSlice";
+import { Hamster } from "../Interfaces";
+import { reRenderHamster } from "../state/features/reRenderSlice";
 
 function AddHamster() {
   const [name, setName] = useState("");
@@ -107,8 +107,8 @@ function AddHamster() {
   }
   async function getData() {
     const response: Response = await fetch(fixUrl("/hamsters/"));
-    const apiData: any = await response.json();
-    let data: any[] = apiData;
+    const apiData: Hamster[] = await response.json();
+    let data: Hamster[] = apiData;
     dispatch(addHamster(apiData));
     dispatch(reRenderHamster(!reRenderData));
   }

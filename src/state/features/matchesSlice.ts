@@ -15,7 +15,6 @@ const matchesSlice = createSlice({
   reducers: {
     addMatches: (state, { payload }) => {
       state.value = payload;
-      console.log(payload);
     },
   },
 });

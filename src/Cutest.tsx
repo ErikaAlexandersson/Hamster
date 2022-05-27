@@ -1,14 +1,21 @@
 import { Hamster } from "./Interfaces";
 import "./Cutest.css";
 import { fixImgUrl } from "./utils";
+import { getMetadata } from "firebase/storage";
 
 interface Prop {
   data: Hamster | null;
+  getData?: () => void;
 }
 
-function Cutest({ data }: Prop) {
-  if (data === null || undefined) {
-    return <div>Det finns ingen hamster...</div>;
+function Cutest({ data, getData }: Prop) {
+  if ((data === null || data === undefined) && getData !== undefined) {
+    return (
+      <div>
+        <p>Vi hittade ingen hamster</p>
+        <button onClick={() => getData()}>Pröva att hämta datan igen</button>
+      </div>
+    );
   }
   return (
     <div className="cutest">

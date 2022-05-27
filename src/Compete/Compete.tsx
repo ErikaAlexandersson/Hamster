@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Hamster } from "./Interfaces";
+import { Hamster } from "../Interfaces";
 import "./Compete.css";
 import CompetingHamster from "./CompetingHamster";
 // import FireWorks from "./FireWorks";
-import fixUrl from "./utils";
-import Cutest from "./Cutest";
+import fixUrl from "../utils";
+import Cutest from "../Cutest";
 
 function Compete() {
   const [competingHamsters, setCompetingHamsters] = useState<Hamster[]>([]);
@@ -32,7 +32,7 @@ function Compete() {
     setWinner(winner);
   }
 
-  async function vote(hamster: any) {
+  async function vote(hamster: Hamster) {
     let winnerData = { games: hamster.games + 1, wins: hamster.wins + 1 };
     fetch(fixUrl(`/hamsters/${hamster.id}`), {
       body: JSON.stringify(winnerData),

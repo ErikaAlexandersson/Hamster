@@ -1,10 +1,10 @@
-import { Hamster, Matches } from "./Interfaces";
+import { Hamster, Matches } from "../Interfaces";
 import { useSelector } from "react-redux";
-import { RootState } from "./state/store";
+import { RootState } from "../state/store";
 import "./GameInfo.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { fixImgUrl } from "./utils";
+import { fixImgUrl } from "../utils";
 interface Prop {
   data: Hamster;
   winner: Matches[] | null;
@@ -35,7 +35,11 @@ function GameInfo({ data, winner, loser }: Prop) {
       <>
         <li>
           {hamster.name}
-          <img className="tiny-image" src={fixImgUrl(hamster.imgName)}></img>
+          <img
+            className="tiny-image"
+            src={fixImgUrl(hamster.imgName)}
+            key={hamster.imgName}
+          ></img>
         </li>
       </>
     );
@@ -46,7 +50,11 @@ function GameInfo({ data, winner, loser }: Prop) {
       <>
         <li>
           {hamster.name}
-          <img className="tiny-image" src={fixImgUrl(hamster.imgName)}></img>
+          <img
+            className="tiny-image"
+            src={fixImgUrl(hamster.imgName)}
+            key={hamster.imgName}
+          ></img>
         </li>
       </>
     );

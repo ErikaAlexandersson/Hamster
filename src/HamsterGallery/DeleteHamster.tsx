@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Hamster } from "./Interfaces";
-import { RootState } from "./state/store";
-import { addHamster } from "./state/features/hamsterSlice";
-import { reRenderHamster } from "./state/features/reRenderSlice";
-import fixUrl from "./utils";
+import { Hamster } from "../Interfaces";
+import { RootState } from "../state/store";
+import { addHamster } from "../state/features/hamsterSlice";
+import { reRenderHamster } from "../state/features/reRenderSlice";
+import fixUrl from "../utils";
 
 interface Prop {
   data: Hamster;

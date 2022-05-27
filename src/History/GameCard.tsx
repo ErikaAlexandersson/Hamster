@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { Hamster, Matches } from "./Interfaces";
+import { Hamster, Matches } from "../Interfaces";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "./state/store";
-import fixUrl from "./utils";
-import { fixImgUrl } from "./utils";
-import { reRenderHamster } from "./state/features/reRenderSlice";
+import { RootState } from "../state/store";
+import fixUrl from "../utils";
+import { fixImgUrl } from "../utils";
+import { reRenderHamster } from "../state/features/reRenderSlice";
 import "./GameCard.css";
-import { addMatches } from "./state/features/matchesSlice";
+import { addMatches } from "../state/features/matchesSlice";
 
 interface Prop {
   data: Matches;
@@ -82,7 +82,7 @@ function GameCard({ data }: Prop) {
             <img src={fixImgUrl(`${winner.imgName}`)} alt="" />
           </div>
           <p>
-            Detta är {winner.wins}: e gången {winner.name} vinner en match
+            {winner.name} har vunnit {winner.wins} gånger
           </p>
         </div>
       ) : (
@@ -98,7 +98,7 @@ function GameCard({ data }: Prop) {
             <img src={fixImgUrl(`${loser.imgName}`)} alt="" />
           </div>
           <p>
-            Detta är {loser.defeats}:e gången {loser.name} förlorar
+            {loser.name} har förlorat {loser.defeats} gånger
           </p>
         </div>
       ) : (
