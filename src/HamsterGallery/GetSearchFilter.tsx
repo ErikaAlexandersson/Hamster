@@ -100,7 +100,7 @@ function GetSearchFilter() {
       <div className="sort-and-serach-container">
         <div className="custom-sort" onClick={() => openClose()}>
           <div className="custom-sort-header">
-            <h3>Filtrera efter</h3>
+            <h3>Sortera efter</h3>
             <p style={{ rotate: `${rotate}` }}>&#709;</p>
           </div>
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Hamster } from "../Interfaces";
 import { fixImgUrl } from "../utils";
+import fixUrl from "../utils";
 import "./CompetingHamster.css";
 
 interface Prop {
@@ -12,9 +13,7 @@ function CompetingHamster({ vote, whatHamster }: Prop) {
   const [data, setData] = useState<Hamster | null>(null);
   useEffect(() => {
     async function getData() {
-      const response: Response = await fetch(
-        "http://localhost:1337/hamsters/random"
-      );
+      const response: Response = await fetch(fixUrl("/hamsters/random"));
       const apiData: Hamster = await response.json();
       let data: Hamster = apiData;
       setData(apiData);
